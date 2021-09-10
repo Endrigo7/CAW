@@ -5,6 +5,7 @@ import com.school.cesar.cib.exception.AlunoInvalidoException
 import com.school.cesar.cib.util.CPFUtil
 import com.school.cesar.cib.util.CPFUtil.isCPF
 import com.school.cesar.cib.util.SenhaUtil
+import com.school.cesar.cib.util.SenhaUtil.isFormatoOK
 
 object AlunoValidator {
 
@@ -47,7 +48,7 @@ object AlunoValidator {
             throw AlunoInvalidoException("O cpf é invalido")
         }
 
-        if(!SenhaUtil.isFormatoOK(aluno.senha)){
+        if(!isFormatoOK(aluno.senha)){
             throw AlunoInvalidoException("O a senha deve conter numeros, letras maisculas e minusculas")
         }
     }
