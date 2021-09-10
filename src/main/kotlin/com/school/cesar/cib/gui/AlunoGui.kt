@@ -22,6 +22,10 @@ class AlunoGui {
             primeiraSenha = true
         )
 
-        AlunoService.salvar(aluno)
+        runCatching {
+            AlunoService.salvar(aluno)
+        }.onFailure {
+            println(it.message)
+        }
     }
 }

@@ -1,3 +1,5 @@
+import jdk.nashorn.internal.objects.NativeRegExp.test
+
 plugins {
     kotlin("jvm") version "1.5.10"
 }
@@ -11,4 +13,10 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
+
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.1")
+}
+
+tasks.withType<Test>{
+    useJUnitPlatform()
 }
