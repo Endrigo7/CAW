@@ -19,15 +19,25 @@ object CPFUtil {
         if (numbers.all { it == numbers[0] }) return false
 
         //digito 1
-        val dv1 = ((0..8).sumOf { (it + 1) * numbers[it] }).rem(11).let {
-            if (it >= 10) 0 else it
-        }
+        val dv1 = calculaDigito1(numbers)
 
+        val dv2 = calculaDigito2(numbers, dv1)
+
+        return numbers[9] == dv1 && numbers[10] == dv2
+    }
+
+    internal fun calculaDigito2(numbers: List<Int>, dv1: Int): Int {
         val dv2 = ((0..8).sumOf { it * numbers[it] }.let { (it + (dv1 * 9)).rem(11) }).let {
             if (it >= 10) 0 else it
         }
+        return dv2
+    }
 
-        return numbers[9] == dv1 && numbers[10] == dv2
+    internal fun calculaDigito1(numbers: List<Int>): Int {
+        val dv1 = ((0..8).sumOf { (it + 1) * numbers[it] }).rem(11).let {
+            if (it >= 10) 0 else it
+        }
+        return dv1
     }
 
 }
