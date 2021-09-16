@@ -6,24 +6,40 @@ import java.security.MessageDigest
 object SenhaUtil {
 
     fun isFormatoOK(senha: String) : Boolean {
-        var contemLetraMinuscula: Boolean = false
-        var contemLetraMaiscula: Boolean = false
-        var contemNumero: Boolean = false
+        var contemLetraMinuscula = false
+        var contemLetraMaiscula = false
+        var contemNumero = false
 
         for (letra in senha){
-            if(letra in 'a'..'z'){
-                contemLetraMinuscula = true
-            }
-
-            if(letra in 'A'..'Z'){
-                contemLetraMaiscula = true
-            }
-
-            if(letra in '0'..'9'){
-                contemNumero = true
-            }
+            contemLetraMinuscula = temLetraMiniscula(letra, contemLetraMinuscula)
+            contemLetraMaiscula = temLetraMaiscula(letra, contemLetraMaiscula)
+            contemNumero = temNumero(letra, contemNumero)
         }
         return contemLetraMinuscula && contemLetraMaiscula && contemNumero
+    }
+
+    private fun temNumero(letra: Char, contemNumero: Boolean): Boolean {
+        var contemNumero1 = contemNumero
+        if (letra in '0'..'9') {
+            contemNumero1 = true
+        }
+        return contemNumero1
+    }
+
+    private fun temLetraMaiscula(letra: Char, contemLetraMaiscula: Boolean): Boolean {
+        var contemLetraMaiscula1 = contemLetraMaiscula
+        if (letra in 'A'..'Z') {
+            contemLetraMaiscula1 = true
+        }
+        return contemLetraMaiscula1
+    }
+
+    private fun temLetraMiniscula(letra: Char, contemLetraMinuscula: Boolean): Boolean {
+        var contemLetraMinuscula1 = contemLetraMinuscula
+        if (letra in 'a'..'z') {
+            contemLetraMinuscula1 = true
+        }
+        return contemLetraMinuscula1
     }
 
     fun md5(input:String): String {
