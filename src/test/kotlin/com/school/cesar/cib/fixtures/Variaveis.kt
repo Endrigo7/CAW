@@ -4,8 +4,8 @@ import com.school.cesar.cib.entity.Aluno
 
 val aluno = Aluno(
     nome = "Endrigo Ferreira",
-    cpf = "123.123.123-12",
-    senha = "123456778",
+    cpf = "12312312312",
+    senha = "123456778aebC",
     primeiraSenha = true
 )
 
