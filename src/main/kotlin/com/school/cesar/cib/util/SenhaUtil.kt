@@ -11,31 +11,31 @@ object SenhaUtil {
         var contemNumero = false
 
         for (letra in senha){
-            contemLetraMinuscula = temLetraMiniscula(letra, contemLetraMinuscula)
-            contemLetraMaiscula = temLetraMaiscula(letra, contemLetraMaiscula)
-            contemNumero = temNumero(letra, contemNumero)
+            contemLetraMinuscula = temLetraMiniscula(letra)
+            contemLetraMaiscula = temLetraMaiscula(letra)
+            contemNumero = temNumero(letra)
         }
         return contemLetraMinuscula && contemLetraMaiscula && contemNumero
     }
 
-    private fun temNumero(letra: Char, contemNumero: Boolean): Boolean {
-        var contemNumero1 = contemNumero
+    private fun temNumero(letra: Char): Boolean {
+        var contemNumero1 = false
         if (letra in '0'..'9') {
             contemNumero1 = true
         }
         return contemNumero1
     }
 
-    private fun temLetraMaiscula(letra: Char, contemLetraMaiscula: Boolean): Boolean {
-        var contemLetraMaiscula1 = contemLetraMaiscula
+    private fun temLetraMaiscula(letra: Char): Boolean {
+        var contemLetraMaiscula1 = false
         if (letra in 'A'..'Z') {
             contemLetraMaiscula1 = true
         }
         return contemLetraMaiscula1
     }
 
-    private fun temLetraMiniscula(letra: Char, contemLetraMinuscula: Boolean): Boolean {
-        var contemLetraMinuscula1 = contemLetraMinuscula
+    private fun temLetraMiniscula(letra: Char): Boolean {
+        var contemLetraMinuscula1 = false
         if (letra in 'a'..'z') {
             contemLetraMinuscula1 = true
         }
