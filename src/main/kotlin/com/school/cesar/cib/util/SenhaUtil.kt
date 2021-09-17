@@ -11,10 +11,11 @@ object SenhaUtil {
         var contemNumero = false
 
         for (letra in senha){
-            contemLetraMinuscula = temLetraMiniscula(letra)
-            contemLetraMaiscula = temLetraMaiscula(letra)
-            contemNumero = temNumero(letra)
+            contemLetraMinuscula = contemLetraMinuscula || temLetraMiniscula(letra)
+            contemLetraMaiscula = contemLetraMaiscula || temLetraMaiscula(letra)
+            contemNumero = contemNumero || temNumero(letra)
         }
+
         return contemLetraMinuscula && contemLetraMaiscula && contemNumero
     }
 
